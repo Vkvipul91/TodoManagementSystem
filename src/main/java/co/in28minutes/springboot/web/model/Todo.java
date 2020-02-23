@@ -2,14 +2,21 @@ package co.in28minutes.springboot.web.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Todo {
+	
+	@Id
+	@GeneratedValue
 	private int id;
     private String user;
     
     @Size(min=10, message="Enter at least 10 Characters...")
-    private String desc;
+    private String description;
     private Date targetDate;
     private boolean isDone;
     
@@ -21,7 +28,7 @@ public class Todo {
         super();
         this.id = id;
         this.user = user;
-        this.desc = desc;
+        this.description = desc;
         this.targetDate = targetDate;
         this.isDone = isDone;
     }
@@ -43,11 +50,11 @@ public class Todo {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public Date getTargetDate() {
@@ -98,7 +105,7 @@ public class Todo {
     public String toString() {
         return String.format(
                 "Todo [id=%s, user=%s, desc=%s, targetDate=%s, isDone=%s]", id,
-                user, desc, targetDate, isDone);
+                user, description, targetDate, isDone);
     }
 
 }
